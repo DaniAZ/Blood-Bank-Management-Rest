@@ -1,8 +1,10 @@
 package edu.mum.bloodbankrest.controller;
 
 
+import edu.mum.bloodbankrest.domain.BloodType;
 import edu.mum.bloodbankrest.domain.Donation;
 import edu.mum.bloodbankrest.domain.Donor;
+import edu.mum.bloodbankrest.domain.Total;
 import edu.mum.bloodbankrest.service.DonationService;
 import edu.mum.bloodbankrest.service.DonorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +30,16 @@ public class DonorController {
     }
 
     @GetMapping("/{id}")
-    public Donor getDonorById( @PathVariable("id") Long donorId) {
-
+    public Donor getDonorById(@PathVariable("id") Long donorId) {
+         System.out.println(donorId);
         return donorService.findOne(donorId);
+    }
+
+    @GetMapping("/home")
+    public @ResponseBody List<Total> getDonorByBloodType() {
+
+         return  donorService.findAvailableBloodType();
+
     }
 
 

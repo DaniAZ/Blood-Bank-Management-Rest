@@ -1,5 +1,6 @@
 package edu.mum.bloodbankrest.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@JsonIgnoreProperties
 public class BloodDrive {
 
 	@Id
@@ -26,7 +28,7 @@ public class BloodDrive {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
-	@OneToMany(mappedBy="bloodDrive",fetch=FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@OneToMany(mappedBy="bloodDrive",fetch=FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Set<Donation> donations = new HashSet<Donation>();
 
 

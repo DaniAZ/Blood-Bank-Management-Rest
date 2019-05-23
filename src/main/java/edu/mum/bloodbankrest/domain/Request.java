@@ -14,7 +14,8 @@ public class Request {
 	private Long id;
 
 	@OneToOne
-	private BloodType blodType;
+	private BloodType bloodType;
+
 	private int quantity;
 
 	@OneToOne
@@ -23,18 +24,54 @@ public class Request {
 	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="hospital_id")
 	private Hospital hospital;
-	
+
 	public Request() {}
 
-	public Request(Long id, BloodType blodType, int quantity, Status status) {
+	public Request(Long id, BloodType bloodType, int quantity, Status status) {
 		this.id = id;
-	   this.blodType = blodType;
+		this.bloodType = bloodType;
 		this.quantity = quantity;
 		this.status = status;
-		
+
 	}
 
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public BloodType getBloodType() {
+		return bloodType;
+	}
+
+	public void setBloodType(BloodType bloodType) {
+		this.bloodType = bloodType;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public Hospital getHospital() {
+		return hospital;
 	}
 }

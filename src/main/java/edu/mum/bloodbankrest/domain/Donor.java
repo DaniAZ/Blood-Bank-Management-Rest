@@ -25,16 +25,19 @@ public class Donor{
 	@NotEmpty
 	private String lastName;
 
-	@Min(value=16)
+
 	private int age;
 
-	@Min(value=110)
+
+
 	private double weight;
 
 	@Email
 	private String email;
 	private String phoneNumber;
 	private String medicalHistory;
+	@OneToOne
+	private BloodType bloodType;
 
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="donorId")
@@ -50,7 +53,7 @@ public class Donor{
 	public Donor() {}
 
 	public Donor(String firstName, String lastName, int age, double weight, String email, String phoneNumber,
-			String medicalHistory) {
+				 String medicalHistory) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
@@ -64,4 +67,14 @@ public class Donor{
 		this.donations.add(donation);
 		donation.setDonor(this);
 	}
+
+	public BloodType getBloodType() {
+		return bloodType;
+	}
+
+	public void setBloodType(BloodType bloodType) {
+		this.bloodType = bloodType;
+	}
+
+
 }

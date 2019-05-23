@@ -24,7 +24,7 @@ public class Address {
 	@Size(min = 5, max = 10)
 	private String zipCode;
 
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private State state;
 
 	public Address() {
@@ -37,4 +37,43 @@ public class Address {
 		this.state=state;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
 }
